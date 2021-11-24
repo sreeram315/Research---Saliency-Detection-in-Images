@@ -227,6 +227,10 @@ class ImageSaliencyModel(object):
     def plot_img_top_crops(self, img_path):
         return self.plot_img_crops(img_path, topK=1, aspectRatios=None)
 
+    def someNewFunction():
+        print("CALLED: someNewFunction")
+        return "Hello"
+
     def plot_img_crops(
         self,
         img_path,
