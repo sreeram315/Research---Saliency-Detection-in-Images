@@ -248,6 +248,7 @@ class ImageSaliencyModel(object):
         if aspectRatios is None:
             print("New aspects")
             aspectRatios = [0.3125, 0.625, 1.0, 1.14, 2.0, img_h / img_w]
+            
         print("Aspects are ", aspectRatios)
 
         output = self.get_output(img_path, aspectRatios=aspectRatios)
