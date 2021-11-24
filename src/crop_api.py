@@ -129,6 +129,11 @@ def is_symmetric(
     return score < threshold
 
 
+class NewClass(object):
+    def newFunc():
+        return "Hello from NewClass"
+
+
 class ImageSaliencyModel(object):
     def __init__(
         self,
