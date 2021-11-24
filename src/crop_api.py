@@ -1,8 +1,3 @@
-"""
-Copyright 2021 Twitter, Inc.
-SPDX-License-Identifier: Apache-2.0
-"""
-
 from pathlib import Path
 from collections import namedtuple
 import numpy as np
@@ -148,11 +143,6 @@ class ImageSaliencyModel(object):
             f'{self.crop_binary_path} {self.crop_model_path} "{{}}" show_all_points'
         )
 
-    #         if self.aspectRatios:
-    #             self.cmd_template = self.cmd_template + " ".join(
-    #                 str(ar) for ar in self.aspectRatios
-    #             )
-
     def get_output(self, img_path, aspectRatios=None):
         cmd = self.cmd_template.format(img_path.absolute())
         if aspectRatios is None:
@@ -256,7 +246,7 @@ class ImageSaliencyModel(object):
             aspectRatios = self.aspectRatios
 
         if aspectRatios is None:
-            aspectRatios = [0.56, 1.0, 1.14, 2.0, img_h / img_w]
+            aspectRatios = [0.56, 0.625, 1.0, 1.14, 2.0, img_h / img_w]
 
         output = self.get_output(img_path, aspectRatios=aspectRatios)
         n_crops = len(output["crops"])
