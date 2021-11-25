@@ -246,21 +246,18 @@ class ImageSaliencyModel(object):
         col_wrap=None,
         add_saliency_line=True,
     ):
-        print("1. YELLO, starting plot_img_crops")
+        print("1. HELLO, starting plot_img_crops")
         img = mpimg.imread(img_path)
         img_h, img_w = img.shape[:2]
-
-        print(aspectRatios, img_w, img_h)
 
         if aspectRatios is None:
             aspectRatios = self.aspectRatios
 
         if aspectRatios is None:
-            print("New aspects")
+            print("No aspects passed. Taking default ones.")
             aspectRatios = [0.3125, 0.625, 1.0, 1.14, img_h / img_w]
 
-        print("Aspects are ", aspectRatios)
-
+        print("Aspects being submitted: ", aspectRatios)
         output = self.get_output(img_path, aspectRatios=aspectRatios)
         n_crops = len(output["crops"])
         salient_x, salient_y, = output[
@@ -270,10 +267,6 @@ class ImageSaliencyModel(object):
 
         logging.info(f"{(img_w, img_h)}, {aspectRatios}, {(salient_x, salient_y)}")
 
-        print(f"\n--> {(img_w, img_h)}, {aspectRatios}, {(salient_x, salient_y)}\n")
-
-        # Keep aspect ratio same and max dim size 5
-        # fig_h/fig_w = img_h/img_w
         if img_w > img_h:
             fig_w = 5
             fig_h = fig_w * (img_h / img_w)
@@ -299,6 +292,7 @@ class ImageSaliencyModel(object):
                 fig_width = fig_w * ncols
                 fig_height = fig_h * nrows
 
+        plt.title("Crops for different aspect ratios")
         fig = plt.figure(constrained_layout=False, figsize=(fig_width, fig_height))
         gs = fig.add_gridspec(nrows, ncols)
 
