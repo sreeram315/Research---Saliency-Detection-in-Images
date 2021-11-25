@@ -351,6 +351,10 @@ class ImageSaliencyModel(object):
             ax = fig.add_subplot(gs[-1, :])
             self.plot_saliency_scores_for_index(img, all_salient_points, ax=ax)
         fig.tight_layout()
+        return {
+            "image_size": (img_w, img_h),
+            "salient_coordinates": (salient_x, salient_y)
+        }
 
     def plot_img_crops_using_img(
         self,
