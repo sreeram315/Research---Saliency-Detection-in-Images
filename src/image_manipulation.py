@@ -1,8 +1,3 @@
-"""
-Copyright 2021 Twitter, Inc.
-SPDX-License-Identifier: Apache-2.0
-"""
-
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle

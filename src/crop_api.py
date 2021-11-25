@@ -270,6 +270,8 @@ class ImageSaliencyModel(object):
 
         logging.info(f"{(img_w, img_h)}, {aspectRatios}, {(salient_x, salient_y)}")
 
+        print(f"\n--> {(img_w, img_h)}, {aspectRatios}, {(salient_x, salient_y)}\n")
+
         # Keep aspect ratio same and max dim size 5
         # fig_h/fig_w = img_h/img_w
         if img_w > img_h:
