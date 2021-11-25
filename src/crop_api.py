@@ -246,7 +246,7 @@ class ImageSaliencyModel(object):
         col_wrap=None,
         add_saliency_line=True,
     ):
-        print("1. YELLO, starting plot_img_crops")
+        print("2. YELLO, starting plot_img_crops")
         img = mpimg.imread(img_path)
         img_h, img_w = img.shape[:2]
 
