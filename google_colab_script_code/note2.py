@@ -15,13 +15,13 @@ import google.colab
 logging.basicConfig(level=logging.ERROR)
 
 import shutil
-shutil.rmtree('/content/final-project-image-crop')
+# shutil.rmtree('/content/final-project-image-crop')
 ! git clone https://github.com/sreeram315/final-project-image-crop
 sys.path.append("final-project-image-crop/src")
 
 bin_dir     = Path("final-project-image-crop/bin")
-bin_path    = "final-project-image-crop/bin/candidate_crops"
-model_path  = "final-project-image-crop/bin/fastgaze.vxm"
+bin_path    = "final-project-image-crop/binData/candidate_crops"
+model_path  = "final-project-image-crop/binData/fastgaze.vxm"
 data_dir    = Path("final-project-image-crop/data")
 data_dir.exists()
 
@@ -43,8 +43,29 @@ output = subprocess.check_output(command, shell=True)
 
 from crop_api import ImageSaliencyModel, is_symmetric, parse_output, reservoir_sampling
 model = ImageSaliencyModel(crop_binary_path=bin_path, crop_model_path=model_path)
-print(img_path)
 saliencyData = model.plot_img_crops(img_path)
 
-print(f" Image Size: {saliencyData['image_size']}\n Salient Coordinates: {saliencyData['salient_coordinates']}")
+print(f"\n\nResults\n Image Size: {saliencyData['image_size']}\n Salient Coordinates: {saliencyData['salient_coordinates']}\n")
+
+
+##
+from utils import cropImage
+absoluteImagePath = str(img_path.absolute())
+
+from fractions import Fraction
+aspectRatios = [0.3125, 0.625, 1.0, 1.14, 2]
+salientCoordinates = saliencyData['salient_coordinates']
+print("Aspect Ratios are:")
+
+for ratio in aspectRatios:
+  fraction = Fraction(ratio).limit_denominator(10)
+  height = fraction.numerator
+  width = fraction.denominator
+  print(f" Aspect Width: {width} Height: {height}")
+  cropImage(absoluteImagePath, (width, height), salientCoordinates, f"photos/{ratio}")
+
+
+
+
+
 
