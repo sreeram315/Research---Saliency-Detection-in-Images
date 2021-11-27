@@ -255,7 +255,7 @@ class ImageSaliencyModel(object):
 
         if aspectRatios is None:
             print("No aspects passed. Taking default ones.")
-            aspectRatios = [0.3125, 0.625, 1.0, 1.14, img_h / img_w]
+            aspectRatios = [0.3125, 0.625, 1.0, 1.14, 2]
 
         print("Aspects being submitted: ", aspectRatios)
         output = self.get_output(img_path, aspectRatios=aspectRatios)
