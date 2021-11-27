@@ -294,7 +294,7 @@ class ImageSaliencyModel(object):
 
         fig = plt.figure(constrained_layout=False, figsize=(fig_width, fig_height))
         gs = fig.add_gridspec(nrows, ncols)
-        plt.title("Crops for different aspect ratios", fontdict = {'fontsize' : 10}, color = 'r')
+        plt.title("Crops for different aspect ratios", fontdict = {'fontsize' : 30}, color = 'r')
 
         # Sort based on saliency score
         all_salient_points = output["all_salient_points"]
