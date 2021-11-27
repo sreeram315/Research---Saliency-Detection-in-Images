@@ -1,4 +1,4 @@
-def cropImage(imagePath, aspectRatio, salientCoordinates):
+def cropImage(imagePath, aspectRatio, salientCoordinates, outputFileName = "output"):
 	from PIL import Image
 	originalImage = Image.open(imagePath)
 	width, height = originalImage.size
@@ -13,4 +13,4 @@ def cropImage(imagePath, aspectRatio, salientCoordinates):
 	print(top, bottom, left, right)
 	croppedImage = originalImage.crop((left, top, right, bottom))
 	croppedImage.show()
-	croppedImage.save("s.jpeg")
+	croppedImage.save(f"{outputFileName}.jpeg")
