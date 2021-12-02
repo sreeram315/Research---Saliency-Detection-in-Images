@@ -302,9 +302,17 @@ class ImageSaliencyModel(object):
         A2 = [ _ for _ in all_salient_points ]
         A2.sort(key=lambda x: x[-1], reverse=True)
         print(A2)
+
         sx = np.asarray(sx)
         sy = np.asarray(sy)
         sz = np.asarray(sz)
+
+        avg_x, avg_y = 0, 0
+        for i in range(5):
+            avg_x += sx[i]
+            avg_y += sy[i] 
+        avg_x /= 5
+        avg_y /= 5
 
         for t in range(0, topK):
             salient_x, salient_y, saliency_score = sx[t], sy[t], sz[t]
@@ -341,7 +349,8 @@ class ImageSaliencyModel(object):
         fig.tight_layout()
         return {
             "image_size": (img_w, img_h),
-            "salient_coordinates": (salient_x, salient_y)
+            "salient_coordinates": (salient_x, salient_y),
+            "top5_average_coordinates": (avg_x, avg_y)
         }
 
     def plot_img_crops_using_img(
