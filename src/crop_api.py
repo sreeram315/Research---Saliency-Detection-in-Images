@@ -298,9 +298,10 @@ class ImageSaliencyModel(object):
 
         # Sort based on saliency score
         all_salient_points = output["all_salient_points"]
-        print(all_salient_points)
         sx, sy, sz = zip(*sorted(all_salient_points, key=lambda x: x[-1], reverse=True))
-        print(all_salient_points)
+        A2 = [ _ for _ in all_salient_points ]
+        A2.sort(key=lambda x: x[-1], reverse=True)
+        print(A2)
         sx = np.asarray(sx)
         sy = np.asarray(sy)
         sz = np.asarray(sz)
