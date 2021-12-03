@@ -16,8 +16,8 @@ from matplotlib.collections import PatchCollection
 # Define file paths
 IMAGE_NAME = "input4.jpeg"
 img_path    = Path(f"{IMAGE_NAME}")
-bin_path    = "candidate_crops"
-model_path  = "fastgaze.vxm"
+bin_path    = Path("candidate_crops")
+model_path  = Path("fastgaze.vxm")
 img_path 	= Path("input.jpeg")
 
 print("\n")
@@ -28,7 +28,7 @@ print("\n")
 
 # Show crop part for different aspect ratios
 from crop_api import ImageSaliencyModel, is_symmetric, parse_output, reservoir_sampling
-model = ImageSaliencyModel(crop_binary_path=bin_path, crop_model_path=model_path)
+model = ImageSaliencyModel(crop_binary_path = bin_path.absolute(), crop_model_path = model_path.absolute())
 saliencyData = model.plot_img_crops(img_path)
 print(saliencyData)
 
