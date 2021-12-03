@@ -4,7 +4,6 @@ import subprocess
 import sys
 import platform
 import shutil
-import google.colab
 import numpy as np
 from pathlib import Path
 import matplotlib.pyplot as plt
