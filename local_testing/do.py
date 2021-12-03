@@ -37,7 +37,6 @@ print(saliencyData)
 from fractions import Fraction
 from utils import cropImage
 #shutil.rmtree('/content/photos')
-! mkdir photos
 absoluteImagePath = str(img_path.absolute())
 aspectRatios = [0.3125, 0.625, 1.0, 1.14, 2]
 salientCoordinates = saliencyData['top10_average_coordinates']
@@ -58,4 +57,3 @@ for ratio in aspectRatios:
 
 
 
-  
