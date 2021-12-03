@@ -26,6 +26,9 @@ print(f"Model is at: {str(model_path)}")
 print("\n")
 
 
+
+sys.path.append("../src")
+
 # Show crop part for different aspect ratios
 from crop_api import ImageSaliencyModel, is_symmetric, parse_output, reservoir_sampling
 model = ImageSaliencyModel(crop_binary_path = bin_path.absolute(), crop_model_path = model_path.absolute())

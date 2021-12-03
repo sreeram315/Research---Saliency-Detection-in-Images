@@ -305,7 +305,7 @@ class ImageSaliencyModel(object):
 
         sx = np.asarray(sx)
         sy = np.asarray(sy)
-        sz = np.asarray(sz)
+        sz = np.asarray(sz) 
 
         avg_x, avg_y = 0, 0
         for i in range(10):
