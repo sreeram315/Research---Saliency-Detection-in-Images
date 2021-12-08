@@ -173,7 +173,7 @@ class ImageSaliencyModel(object):
         # return ax
         ax.set_axis_off()
         if download:
-            fig.savefig("yolo.jpeg")
+            fig.savefig("heat_map.jpeg")
         return ax
 
     def plot_saliency_scores_for_index(self, img, all_salient_points, ax=None):
@@ -312,7 +312,7 @@ class ImageSaliencyModel(object):
 
         fig = plt.figure()
         plt.title("Heat Map")
-        ax_map = self.plot_saliency_map(img, all_salient_points, None, True)
+        # ax_map = self.plot_saliency_map(img, all_salient_points, None, True)
         plt.close()
 
         fig = plt.figure(constrained_layout=False, figsize=(fig_width, fig_height))
