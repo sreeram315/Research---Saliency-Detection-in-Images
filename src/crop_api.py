@@ -299,7 +299,7 @@ class ImageSaliencyModel(object):
 
         print("->", nrows, ncols)
 
-        
+
         # Sort based on saliency score
         all_salient_points = output["all_salient_points"]
         sx, sy, sz = zip(*sorted(all_salient_points, key=lambda x: x[-1], reverse=True))
@@ -309,7 +309,7 @@ class ImageSaliencyModel(object):
 
         fig = plt.figure()
         plt.title("Heat Map")
-        ax_map = self.plot_saliency_map(img, all_salient_points, ax=ax_map)
+        ax_map = self.plot_saliency_map(img, all_salient_points)
         fig.save("hm.jpeg")
 
         fig = plt.figure(constrained_layout=False, figsize=(fig_width, fig_height))
