@@ -159,6 +159,9 @@ class ImageSaliencyModel(object):
         output = parse_output(output)
         return output
 
+    def saveHeatMap(self, img, all_salient_points, ax = None):
+        
+
     def plot_saliency_map(self, img, all_salient_points, ax=None):
         if ax is None:
             fig, ax = plt.subplots(1, 1)
@@ -167,7 +170,7 @@ class ImageSaliencyModel(object):
         ax.imshow(img, alpha=0.1)
         ax.scatter(sx, sy, c=sz, s=100, alpha=0.8, marker="s", cmap="Reds")
         # return ax
-        plt.savefig('foo.jpeg')
+        fig.savefig('foo.jpeg')
         ax.set_axis_off()
         return ax
 
