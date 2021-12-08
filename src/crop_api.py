@@ -312,6 +312,7 @@ class ImageSaliencyModel(object):
         fig = plt.figure()
         plt.title("Heat Map")
         ax_map = self.plot_saliency_map(img, all_salient_points, None, True)
+        plt.close()
 
         fig = plt.figure(constrained_layout=False, figsize=(fig_width, fig_height))
         gs = fig.add_gridspec(nrows, ncols)
