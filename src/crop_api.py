@@ -167,7 +167,8 @@ class ImageSaliencyModel(object):
             fig, ax = plt.subplots(1, 1)
         # Sort points based on Y axis
         sx, sy, sz = zip(*all_salient_points)
-        ax.imshow(img, alpha=0.1)
+        if not download:
+            ax.imshow(img, alpha=0.1)
         ax.scatter(sx, sy, c=sz, s=100, alpha=0.8, marker="s", cmap="Reds")
         # return ax
         ax.set_axis_off()
