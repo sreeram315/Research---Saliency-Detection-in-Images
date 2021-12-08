@@ -159,7 +159,7 @@ class ImageSaliencyModel(object):
         output = parse_output(output)
         return output
 
-    def saveHeatMap(self, img, all_salient_points, ax = None):
+    # def saveHeatMap(self, img, all_salient_points, ax = None):
         
 
     def plot_saliency_map(self, img, all_salient_points, ax=None):
