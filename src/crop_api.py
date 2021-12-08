@@ -341,12 +341,13 @@ class ImageSaliencyModel(object):
                     original_crop=original_crop,
                     checkSymmetry=checkSymmetry,
                 )
+                break
                 if n_crops == 1:
                     ax.set_title(f"Saliency Rank: {t+1} | {ax.get_title()}")
         if add_saliency_line:
             ax = fig.add_subplot(gs[-1, :])
             self.plot_saliency_scores_for_index(img, all_salient_points, ax=ax)
-        # fig.tight_layout()
+        fig.tight_layout()
         return {
             "image_size": (img_w, img_h),
             "salient_coordinates": (salient_x, salient_y),
