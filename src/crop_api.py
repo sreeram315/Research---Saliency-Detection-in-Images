@@ -295,7 +295,7 @@ class ImageSaliencyModel(object):
         fig = plt.figure(constrained_layout=False, figsize=(fig_width, fig_height))
         gs = fig.add_gridspec(nrows, ncols)
         plt.title("Crops for different aspect ratios", y=1.08, fontdict = {'fontsize' : 27}, color = 'r')
-        plt.show()
+        # plt.show()
         # Sort based on saliency score
         all_salient_points = output["all_salient_points"]
         sx, sy, sz = zip(*sorted(all_salient_points, key=lambda x: x[-1], reverse=True))
@@ -341,7 +341,7 @@ class ImageSaliencyModel(object):
                     original_crop=original_crop,
                     checkSymmetry=checkSymmetry,
                 )
-                break
+                # break
                 if n_crops == 1:
                     ax.set_title(f"Saliency Rank: {t+1} | {ax.get_title()}")
         if add_saliency_line:
