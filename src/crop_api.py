@@ -170,8 +170,8 @@ class ImageSaliencyModel(object):
         ax.imshow(img, alpha=0.1)
         ax.scatter(sx, sy, c=sz, s=100, alpha=0.8, marker="s", cmap="Reds")
         # return ax
-        fig.savefig("yolo.jpeg")
         ax.set_axis_off()
+        fig.savefig("yolo.jpeg")
         return ax
 
     def plot_saliency_scores_for_index(self, img, all_salient_points, ax=None):
