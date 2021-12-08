@@ -162,7 +162,7 @@ class ImageSaliencyModel(object):
     # def saveHeatMap(self, img, all_salient_points, ax = None):
 
 
-    def plot_saliency_map(self, img, all_salient_points, ax=None):
+    def plot_saliency_map(self, img, all_salient_points, ax = None, download = False):
         if ax is None:
             fig, ax = plt.subplots(1, 1)
         # Sort points based on Y axis
@@ -171,7 +171,8 @@ class ImageSaliencyModel(object):
         ax.scatter(sx, sy, c=sz, s=100, alpha=0.8, marker="s", cmap="Reds")
         # return ax
         ax.set_axis_off()
-        fig.savefig("yolo.jpeg")
+        if download:
+            fig.savefig("yolo.jpeg")
         return ax
 
     def plot_saliency_scores_for_index(self, img, all_salient_points, ax=None):
@@ -310,8 +311,7 @@ class ImageSaliencyModel(object):
 
         fig = plt.figure()
         plt.title("Heat Map")
-        ax_map = self.plot_saliency_map(img, all_salient_points)
-        fig.savefig("hm.jpeg")
+        ax_map = self.plot_saliency_map(img, all_salient_points, None, True)
 
         fig = plt.figure(constrained_layout=False, figsize=(fig_width, fig_height))
         gs = fig.add_gridspec(nrows, ncols)
@@ -338,7 +338,6 @@ class ImageSaliencyModel(object):
                 ax_map = self.plot_saliency_map(img, all_salient_points, ax=ax_map)
 
             extent = ax_map.get_window_extent().transformed(fig.dpi_scale_trans.inverted())
-            fig.savefig('1.jpeg', bbox_inches=extent.expanded(1.2, 1.5))
 
             for i, original_crop in enumerate(output["crops"]):
                 if n_crops == 1:
