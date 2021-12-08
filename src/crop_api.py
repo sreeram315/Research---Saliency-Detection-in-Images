@@ -159,7 +159,13 @@ class ImageSaliencyModel(object):
         output = parse_output(output)
         return output
 
-    # def saveHeatMap(self, img, all_salient_points, ax = None):
+    def saveHeatMap(self, img, all_salient_points):
+        fig, ax = plt.subplots(1, 1)
+        sx, sy, sz = zip(*all_salient_points)
+        ax.scatter(sx, sy, c=sz, s=100, alpha=0.8, marker="s", cmap="Reds")
+        ax.set_axis_off()
+        ifig.savefig("heat_map.jpeg")
+        return ax
 
 
     def plot_saliency_map(self, img, all_salient_points, ax = None, download = False):
@@ -167,13 +173,10 @@ class ImageSaliencyModel(object):
             fig, ax = plt.subplots(1, 1)
         # Sort points based on Y axis
         sx, sy, sz = zip(*all_salient_points)
-        if not download:
-            ax.imshow(img, alpha=0.1)
+        ax.imshow(img, alpha=0.1)
         ax.scatter(sx, sy, c=sz, s=100, alpha=0.8, marker="s", cmap="Reds")
         # return ax
         ax.set_axis_off()
-        if download:
-            fig.savefig("heat_map.jpeg")
         return ax
 
     def plot_saliency_scores_for_index(self, img, all_salient_points, ax=None):
@@ -312,7 +315,7 @@ class ImageSaliencyModel(object):
 
         fig = plt.figure()
         plt.title("Heat Map")
-        # ax_map = self.plot_saliency_map(img, all_salient_points, None, True)
+        ax_map = self.saveHeatMap(img, all_salient_points)
         plt.close()
 
         fig = plt.figure(constrained_layout=False, figsize=(fig_width, fig_height))
