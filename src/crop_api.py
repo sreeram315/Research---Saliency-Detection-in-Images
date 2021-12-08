@@ -296,6 +296,9 @@ class ImageSaliencyModel(object):
                 fig_width = fig_w * ncols
                 fig_height = fig_h * nrows
 
+
+        print("->", nrows, ncols)
+
         fig = plt.figure(constrained_layout=False, figsize=(fig_width, fig_height))
         gs = fig.add_gridspec(nrows, ncols)
         plt.title("Crops for different aspect ratios", y=1.08, fontdict = {'fontsize' : 27}, color = 'r')
