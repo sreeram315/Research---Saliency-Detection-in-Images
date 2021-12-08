@@ -160,7 +160,7 @@ class ImageSaliencyModel(object):
         return output
 
     # def saveHeatMap(self, img, all_salient_points, ax = None):
-        
+
 
     def plot_saliency_map(self, img, all_salient_points, ax=None):
         if ax is None:
@@ -170,7 +170,6 @@ class ImageSaliencyModel(object):
         ax.imshow(img, alpha=0.1)
         ax.scatter(sx, sy, c=sz, s=100, alpha=0.8, marker="s", cmap="Reds")
         # return ax
-        fig.savefig('foo.jpeg')
         ax.set_axis_off()
         return ax
 
@@ -326,6 +325,9 @@ class ImageSaliencyModel(object):
             if n_crops > 1 or (t == 0 and n_crops == 1):
                 ax_map = fig.add_subplot(gs[t * per_K_rows, 0])
                 ax_map = self.plot_saliency_map(img, all_salient_points, ax=ax_map)
+
+            fig.savefig('1.jpeg')
+            plt.savefig('2.jpeg')
 
             for i, original_crop in enumerate(output["crops"]):
                 if n_crops == 1:
