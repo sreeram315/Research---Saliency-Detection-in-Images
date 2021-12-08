@@ -326,8 +326,7 @@ class ImageSaliencyModel(object):
                 ax_map = fig.add_subplot(gs[t * per_K_rows, 0])
                 ax_map = self.plot_saliency_map(img, all_salient_points, ax=ax_map)
 
-            fig.savefig('1.jpeg')
-            plt.savefig('2.jpeg')
+            fig.savefig('1.jpeg', bbox_inches=extent.expanded(1.2, 1.5))
 
             for i, original_crop in enumerate(output["crops"]):
                 if n_crops == 1:
