@@ -299,6 +299,14 @@ class ImageSaliencyModel(object):
 
         print("->", nrows, ncols)
 
+        
+        # Sort based on saliency score
+        all_salient_points = output["all_salient_points"]
+        sx, sy, sz = zip(*sorted(all_salient_points, key=lambda x: x[-1], reverse=True))
+        A2 = [ _ for _ in all_salient_points ]
+        A2.sort(key = lambda x: x[-1], reverse=True)
+        print(A2)
+
         fig = plt.figure()
         plt.title("Heat Map")
         ax_map = self.plot_saliency_map(img, all_salient_points, ax=ax_map)
@@ -308,12 +316,6 @@ class ImageSaliencyModel(object):
         gs = fig.add_gridspec(nrows, ncols)
         plt.title("Crops for different aspect ratios", y=1.08, fontdict = {'fontsize' : 27}, color = 'r')
         # plt.show()
-        # Sort based on saliency score
-        all_salient_points = output["all_salient_points"]
-        sx, sy, sz = zip(*sorted(all_salient_points, key=lambda x: x[-1], reverse=True))
-        A2 = [ _ for _ in all_salient_points ]
-        A2.sort(key = lambda x: x[-1], reverse=True)
-        print(A2)
 
         sx = np.asarray(sx)
         sy = np.asarray(sy)
