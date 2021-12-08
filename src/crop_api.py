@@ -301,9 +301,8 @@ class ImageSaliencyModel(object):
 
         fig = plt.figure()
         plt.title("Heat Map")
-        ax_map = fig.add_subplot(gs[t * per_K_rows, 0])
         ax_map = self.plot_saliency_map(img, all_salient_points, ax=ax_map)
-        plt.save("hm.jpeg")
+        fig.save("hm.jpeg")
 
         fig = plt.figure(constrained_layout=False, figsize=(fig_width, fig_height))
         gs = fig.add_gridspec(nrows, ncols)
