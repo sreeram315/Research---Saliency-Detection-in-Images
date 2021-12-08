@@ -166,7 +166,7 @@ class ImageSaliencyModel(object):
         sx, sy, sz = zip(*all_salient_points)
         ax.imshow(img, alpha=0.1)
         ax.scatter(sx, sy, c=sz, s=100, alpha=0.8, marker="s", cmap="Reds")
-        return ax
+        # return ax
         ax.set_axis_off()
         return ax
 
