@@ -167,6 +167,7 @@ class ImageSaliencyModel(object):
         ax.imshow(img, alpha=0.1)
         ax.scatter(sx, sy, c=sz, s=100, alpha=0.8, marker="s", cmap="Reds")
         ax.set_axis_off()
+        ax.show()
         return ax
 
     def plot_saliency_scores_for_index(self, img, all_salient_points, ax=None):
@@ -341,7 +342,6 @@ class ImageSaliencyModel(object):
                     original_crop=original_crop,
                     checkSymmetry=checkSymmetry,
                 )
-                break
                 if n_crops == 1:
                     ax.set_title(f"Saliency Rank: {t+1} | {ax.get_title()}")
         if add_saliency_line:
