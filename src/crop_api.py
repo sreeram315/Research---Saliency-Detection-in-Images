@@ -314,10 +314,7 @@ class ImageSaliencyModel(object):
         A2.sort(key = lambda x: x[-1], reverse=True)
         print(A2)
 
-        fig = plt.figure()
-        plt.title("Heat Map")
         ax_map = self.saveHeatMap(img, all_salient_points)
-        plt.close()
 
         fig = plt.figure(constrained_layout=False, figsize=(fig_width, fig_height))
         gs = fig.add_gridspec(nrows, ncols)
