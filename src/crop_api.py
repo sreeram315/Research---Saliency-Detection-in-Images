@@ -162,6 +162,7 @@ class ImageSaliencyModel(object):
     def saveHeatMap(self, img, all_salient_points):
         fig, ax = plt.subplots(1, 1)
         sx, sy, sz = zip(*all_salient_points)
+        ax.imshow(img, alpha=0.1)
         ax.scatter(sx, sy, c=sz, s=100, alpha=0.8, marker="s", cmap="Reds")
         ax.set_axis_off()
         fig.savefig("heat_map.jpeg")
