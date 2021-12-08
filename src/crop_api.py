@@ -300,7 +300,7 @@ class ImageSaliencyModel(object):
         all_salient_points = output["all_salient_points"]
         sx, sy, sz = zip(*sorted(all_salient_points, key=lambda x: x[-1], reverse=True))
         A2 = [ _ for _ in all_salient_points ]
-        A2.sort(key=lambda x: x[-1], reverse=True)
+        A2.sort(key = lambda x: x[-1], reverse=True)
         print(A2)
 
         sx = np.asarray(sx)
@@ -346,7 +346,7 @@ class ImageSaliencyModel(object):
         if add_saliency_line:
             ax = fig.add_subplot(gs[-1, :])
             self.plot_saliency_scores_for_index(img, all_salient_points, ax=ax)
-        fig.tight_layout()
+        # fig.tight_layout()
         return {
             "image_size": (img_w, img_h),
             "salient_coordinates": (salient_x, salient_y),
