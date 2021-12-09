@@ -24,10 +24,14 @@ def cropImage(imagePath, aspectRatio, salientCoordinates, top_feature, outputFil
 		right 		= left + finalWidth
 
 
-	x, y = top_feature[0], top_feature[1]-(0.05 * height)
-	print("-> ", x, y, left, right, top, bottom)
+	m1_x, m1_y = top_feature[0], max(0, top_feature[1]-(0.05 * height))
+	m2_x, m2_y = top_feature[0], min(top_feature[1]+(0.05 * height), height)
+	m3_x, m3_y = max(0, top_feature[0]-(0.05 * width)), top_feature[1]
+	m4_x, m4_y = min(top_feature[0]+(0.05 * width), width), top_feature[1]
 
-	if not (x >= left and x <= right and y>=top and y<=bottom):
+	# print("-> ", left, right, top, bottom)
+
+	if not all([isInsideCrop(m1_x, m1_y), isInsideCrop(m2_x, m2_y), isInsideCrop(m3_x, m3_y), isInsideCrop(m4_x, m4_y)]):
 		print(f"Going for top feature for {outputFileName}")
 		cropImage(imagePath, aspectRatio, top_feature, top_feature, outputFileName)
 		return
