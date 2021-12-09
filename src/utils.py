@@ -29,7 +29,7 @@ def cropImage(imagePath, aspectRatio, salientCoordinates, top_feature, outputFil
 
 	# if not (x >= left and x <= right and y>=bottom and y<=top):
 	# 	print(f"Going for top feature for {outputFileName}")
-		cropImage(imagePath, aspectRatio, top_feature, top_feature, outputFileName)
+	#	cropImage(imagePath, aspectRatio, top_feature, top_feature, outputFileName)
 	croppedImage = originalImage.crop((left, top, right, bottom))
 	croppedImage.show()
 	croppedImage.save(f"{outputFileName}.jpeg")
