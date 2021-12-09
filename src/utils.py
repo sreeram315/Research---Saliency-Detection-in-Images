@@ -24,7 +24,7 @@ def cropImage(imagePath, aspectRatio, salientCoordinates, top_feature, outputFil
 		right 		= left + finalWidth
 
 
-	x, y = top_feature[0], top_feature[1]
+	x, y = top_feature[0], top_feature[1]-(0.05 * height)
 	print("-> ", x, y, left, right, top, bottom)
 
 	# if not (x >= left and x <= right and y>=bottom and y<=top):
