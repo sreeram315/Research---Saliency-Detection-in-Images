@@ -1,3 +1,7 @@
+def isInsideCrop(x, y, crop):
+	left, right, top, bottom = crop[0], crop[1], crop[2], crop[3]
+	return (x >= left and x <= right and y>=top and y<=bottom)
+
 def cropImage(imagePath, aspectRatio, salientCoordinates, top_feature, outputFileName = "output"):
 	from PIL import Image
 	originalImage = Image.open(imagePath)
@@ -30,8 +34,8 @@ def cropImage(imagePath, aspectRatio, salientCoordinates, top_feature, outputFil
 	m4_x, m4_y = min(top_feature[0]+(0.05 * width), width), top_feature[1]
 
 	# print("-> ", left, right, top, bottom)
-
-	if not all([isInsideCrop(m1_x, m1_y), isInsideCrop(m2_x, m2_y), isInsideCrop(m3_x, m3_y), isInsideCrop(m4_x, m4_y)]):
+	crop = (left, right, top, bottom)
+	if not all([isInsideCrop(m1_x, m1_y, crop), isInsideCrop(m2_x, m2_y, crop), isInsideCrop(m3_x, m3_y, crop), isInsideCrop(m4_x, m4_y, crop)]):
 		print(f"Going for top feature for {outputFileName}")
 		cropImage(imagePath, aspectRatio, top_feature, top_feature, outputFileName)
 		return
