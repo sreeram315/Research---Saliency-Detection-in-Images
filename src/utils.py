@@ -25,7 +25,7 @@ def cropImage(imagePath, aspectRatio, salientCoordinates, top_feature, outputFil
 
 
 	x, y = top_feature[0], top_feature[1]
-	print("-> ", x, y, top, bottom, left, right)
+	print("-> ", x, y, left, right, top, bottom)
 
 	# if not (x >= left and x <= right and y>=bottom and y<=top):
 	# 	print(f"Going for top feature for {outputFileName}")
