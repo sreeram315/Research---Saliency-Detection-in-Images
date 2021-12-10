@@ -15,21 +15,6 @@ import logging
 CropRectangle = namedtuple("CropRectangle", "left top width height")
 
 
-def reservoir_sampling(stream, K=5):
-    reservoir = []
-    for i, item in enumerate(stream, start=1):
-        if i <= K:
-            reservoir.append(item)
-            continue
-        # Append new element with prob K/i
-        sample_prob = K / i
-        should_append = np.random.rand() < sample_prob
-        if should_append:
-            # replace random element with new element
-            rand_idx = np.random.randint(K)
-            reservoir[rand_idx] = item
-    return reservoir
-
 
 def parse_output(output):
     output = output.splitlines()
@@ -241,9 +226,6 @@ class ImageSaliencyModel(object):
 
         return ax
 
-    def plot_img_top_crops(self, img_path):
-        return self.plot_img_crops(img_path, topK=1, aspectRatios=None)
-
     def someNewFunction():
         # print("CALLED: someNewFunction")
         return "Hello"
@@ -374,14 +356,3 @@ class ImageSaliencyModel(object):
             "salient_coordinates": (salient_x, salient_y),
             "top10_average_coordinates": (avg_x, avg_y)
         }
-
-    def plot_img_crops_using_img(
-        self,
-        img,
-        img_format="JPEG",
-        **kwargs,
-    ):
-        with tempfile.NamedTemporaryFile("w+b") as fp:
-            # print(fp.name)
-            img.save(fp, img_format)
-            self.plot_img_crops(Path(fp.name), **kwargs)
